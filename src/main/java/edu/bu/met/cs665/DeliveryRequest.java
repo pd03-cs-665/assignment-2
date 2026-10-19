@@ -1,25 +1,50 @@
+/**
+ * Name: Laya Dang
+ * Course: CS-665 Software Designs & Patterns
+ * Date: 10/20/2026
+ * File Name: Driver.java
+ * Description: Concrete class for Delivery Request containing request metadata.
+ */
+
 package edu.bu.met.cs665;
 
-// import java.util.ArrayList;
 import java.util.HashSet;
-// import java.util.List;
+import java.util.Random;
 import java.util.Set;
 
-// subject
+import edu.bu.met.cs665.deliveryobserver.Driver;
+
 public class DeliveryRequest {
+    Random random = new Random();
+
+    private int requestId;
+    private String address;
     public Set<Driver> drivers = new HashSet<>();
 
-    public void addDriver(Driver driver) {
-        drivers.add(driver);
+    /**
+     * Constructor for DeliveryRequest instance. Generates random request ID.
+     * @param address Address for delivery request.
+     */
+    public DeliveryRequest(String address) {
+        int randomId = random.nextInt(9999);
+        this.requestId = randomId;
+        this.address = address;
+        System.out.println("Created delivery request #" + this.requestId + " to '" + this.address + ".");
     }
 
-    public void removeDriver(Driver driver) {
-        drivers.remove(driver);
+    /**
+     * Getter for request ID.
+     * @return Request ID.
+     */
+    public int getRequestId() {
+        return requestId;
     }
 
-    public void notifyDrivers() {
-        for (Driver driver : drivers) {
-            driver.update(this);
-        }
+    /**
+     * Getter for delivery address.
+     * @return Delivery address.
+     */
+    public String getAddress() {
+        return address;
     }
 }
