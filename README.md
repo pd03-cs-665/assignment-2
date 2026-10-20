@@ -38,7 +38,7 @@ I chose the Observer pattern for this assignment, as the task involves one subje
 
 # UML Diagram
 
-TODO
+![uml](./uml/uml.svg)
 
 # Maven Commands
 
