@@ -15,7 +15,7 @@ import java.util.Set;
 
 public class Shop {
     private String name;
-    public Set<DeliveryObserver> observers = new HashSet<>();
+    private Set<DeliveryObserver> observers = new HashSet<>();
 
     /**
      * Constructor for Shop instance.
