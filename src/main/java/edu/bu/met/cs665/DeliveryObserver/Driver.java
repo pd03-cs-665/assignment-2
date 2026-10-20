@@ -10,7 +10,7 @@ package edu.bu.met.cs665.deliveryobserver;
 
 import edu.bu.met.cs665.DeliveryRequest;
 
-public class Driver extends DeliveryObserver {
+public class Driver implements DeliveryObserver {
     private int driverId;
     private int deliveryCount;
 

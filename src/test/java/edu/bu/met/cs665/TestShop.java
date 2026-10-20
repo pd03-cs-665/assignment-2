@@ -52,7 +52,7 @@ public class TestShop {
             mockShop.addDeliveryObserver(driver);
         }
 
-        mockShop.notifyDrivers(mockDeliveryRequest);
+        mockShop.notifyDeliveryObservers(mockDeliveryRequest);
 
         for (Driver driver: drivers) {
             assertEquals(1, driver.getDeliveryCount());
@@ -74,7 +74,7 @@ public class TestShop {
         mockShop.removeDeliveryObserver(driverToRemove);
         assertEquals(1, mockShop.getObserverCount());
 
-        mockShop.notifyDrivers(mockDeliveryRequest);
+        mockShop.notifyDeliveryObservers(mockDeliveryRequest);
         assertEquals(0, driverToRemove.getDeliveryCount());
         assertEquals(1, driverToKeep.getDeliveryCount());
     }

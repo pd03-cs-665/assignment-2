@@ -68,9 +68,9 @@ public class Shop {
     }
 
     /**
-     * Notify all subscribed Driver objects.
+     * Notify all subscribed DeliveryObserver objects.
      */
-    public void notifyDrivers(DeliveryRequest request) {
+    public void notifyDeliveryObservers(DeliveryRequest request) {
         for (DeliveryObserver observer : observers) {
             observer.update(request);
         }
@@ -87,7 +87,7 @@ public class Shop {
 
         System.out.println("Created delivery request for '" + this.name + "' shop.");
 
-        notifyDrivers(request);
+        notifyDeliveryObservers(request);
         return request;
     }
 }
