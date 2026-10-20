@@ -8,17 +8,18 @@
 
 package edu.bu.met.cs665;
 
+import edu.bu.met.cs665.deliveryobserver.DeliveryObserver;
 import java.util.HashSet;
 import java.util.Set;
 
-import edu.bu.met.cs665.deliveryobserver.Driver;
 
 public class Shop {
     private String name;
-    public Set<Driver> drivers = new HashSet<>();
+    public Set<DeliveryObserver> observers = new HashSet<>();
 
     /**
      * Constructor for Shop instance.
+     * 
      * @param name Shop name.
      */
     public Shop(String name) {
@@ -27,6 +28,7 @@ public class Shop {
 
     /**
      * Getter method for shop name.
+     * 
      * @return Shop name.
      */
     public String getName() {
@@ -34,24 +36,34 @@ public class Shop {
     }
 
     /**
-     * Subscribe a driver to get notified on delivery requests.
-     * @param driver Driver object to add.
+     * Gets the number of currently subscribed DeliveryObservers.
+     * @return Number of current DeliveryObservers.
      */
-    public void addDriver(Driver driver) {
-        Boolean driverAdded = drivers.add(driver);
-        if (driverAdded) {
-            System.out.println("Driver " + driver.getDriverId() + " added");
-        }
+    public int getObserverCount() {
+        int observerCount = observers.size();
+        return observerCount;
     }
 
     /**
-     * Remove a driver to unsubscribe from delivery requests.
-     * @param driver Driver object to remove.
+     * Subscribe a delivery observer to get notified on delivery requests.
+     * 
+     * @param observer Object of type DeliveryObserver to add.
      */
-    public void removeDriver(Driver driver) {
-        Boolean driverRemoved = drivers.remove(driver);
-        if (driverRemoved) {
-            System.out.println("Driver " + driver.getDriverId() + " removed");
+    public void addDeliveryObserver(DeliveryObserver observer) {
+        if (observers.add(observer)) {
+            System.out.println("Added DeliveryObserver!");
+        }
+        ;
+    }
+
+    /**
+     * Unsubscribe a delivery observer from delivery requests.
+     * 
+     * @param observer Driver object to remove.
+     */
+    public void removeDeliveryObserver(DeliveryObserver observer) {
+        if (observers.remove(observer)) {
+            System.out.println("Removed DeliveryObserver");
         }
     }
 
@@ -59,13 +71,14 @@ public class Shop {
      * Notify all subscribed Driver objects.
      */
     public void notifyDrivers(DeliveryRequest request) {
-        for (Driver driver : drivers) {
-            driver.update(request);
+        for (DeliveryObserver observer : observers) {
+            observer.update(request);
         }
     }
 
     /**
      * Creates and notifies drivers of a new delivery request.
+     * 
      * @param address Address to create DeliveryRequest to.
      * @return Created DeliveryRequest object.
      */

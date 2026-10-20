@@ -11,5 +11,10 @@ package edu.bu.met.cs665.deliveryobserver;
 import edu.bu.met.cs665.DeliveryRequest;
 
 public abstract class DeliveryObserver {
+    /**
+     * Abstract method triggered by the subject to receive updated information.
+     * 
+     * @param request DeliveryRequest to process.
+     */
     public abstract void update(DeliveryRequest request);
 }

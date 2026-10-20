@@ -8,32 +8,32 @@
 
 package edu.bu.met.cs665;
 
-import java.util.HashSet;
 import java.util.Random;
-import java.util.Set;
-
-import edu.bu.met.cs665.deliveryobserver.Driver;
 
 public class DeliveryRequest {
     Random random = new Random();
 
     private int requestId;
     private String address;
-    public Set<Driver> drivers = new HashSet<>();
 
     /**
      * Constructor for DeliveryRequest instance. Generates random request ID.
+     * 
      * @param address Address for delivery request.
      */
     public DeliveryRequest(String address) {
         int randomId = random.nextInt(9999);
         this.requestId = randomId;
         this.address = address;
-        System.out.println("Created delivery request #" + this.requestId + " to '" + this.address + ".");
+        System.out.println("Created delivery request #"
+                + this.requestId
+                + " to '"
+                + this.address + "'.");
     }
 
     /**
      * Getter for request ID.
+     * 
      * @return Request ID.
      */
     public int getRequestId() {
@@ -42,6 +42,7 @@ public class DeliveryRequest {
 
     /**
      * Getter for delivery address.
+     * 
      * @return Delivery address.
      */
     public String getAddress() {
